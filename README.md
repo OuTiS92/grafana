@@ -1,2 +1,2 @@
 # grafana
-Install Grafana and Import Dashboards 
+Install Grafana and Import Dashboards (mini)

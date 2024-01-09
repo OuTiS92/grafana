@@ -14,7 +14,7 @@ figlet github OuTiS92 | lolcat -t -s -d
 
 sleep 3 
 apt install influxdb influxdb-client >> /dev/null
-
+sleep 5
 systemctl start influxdb 
 
 if systemctl is-active --quiet fail2ban ; then

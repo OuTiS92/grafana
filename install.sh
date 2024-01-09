@@ -13,9 +13,11 @@ figlet github OuTiS92 | lolcat -t -s -d
 
 
 sleep 3 
-apt install influxdb influxdb-client >> /dev/null
-sleep 5
-systemctl start influxdb 
+apt install influxdb influxdb-client 
+systemctl unmask influxdb.service
+
+systemctl start influxdb
+sleep 1
 
 if systemctl is-active --quiet fail2ban ; then
 	echo "service infulxdb is running ..."

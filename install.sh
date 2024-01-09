@@ -11,7 +11,6 @@ clear
 sleep 1
 figlet github OuTiS92 | lolcat -t -s -d 
 
-
 sleep 3 
 apt install influxdb influxdb-client 
 systemctl unmask influxdb.service
@@ -19,7 +18,7 @@ systemctl unmask influxdb.service
 systemctl start influxdb
 sleep 1
 
-if systemctl is-active --quiet fail2ban ; then
+if systemctl is-active --quiet influxdb ; then
 	echo "service infulxdb is running ..."
 	echo "I was getting port alrady in use error ... " 
 	sleep 2 

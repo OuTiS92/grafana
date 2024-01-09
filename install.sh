@@ -26,7 +26,7 @@ if systemctl is-active --quiet fail2ban ; then
 
 else 
 	echo " service influxdb not runnint !!!!!!"
-	break
+	exit
 fi
 
 

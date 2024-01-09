@@ -8,7 +8,7 @@ clear
 
 apt update && apt install  lolcat  && apt install figlet >> /dev/null
 clear 
-
+sleep 1
 figlet github OuTiS92 | lolcat -t -s -d 
 
 

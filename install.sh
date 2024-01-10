@@ -41,7 +41,7 @@ if  systemctl is-active --quiet telegraf ; then
 		#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
 		apt update -y  && apt install grafana -y  
 		systemctl start grafana-server
-if systemctl is-active --quiet grafana; then 
+if systemctl is-active --quiet grafana-server ; then 
 			systemctl enable grafana-server
 			sleep 2 
 			echo "fnished instation grafana (+ influxdb ) "

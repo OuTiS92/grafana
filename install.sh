@@ -32,7 +32,7 @@ if systemctl is-active --quiet influxdb ; then
 	cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 	systemctl start telegraf 
 	systemctl enable telegraf
-	if  systemctl is-active --quiet telegraf; then 
+	if  systemctl is-active --quiet telegraf ; then 
 		
 		$mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
 		$touch /etc/telegraf/telegraf.conf

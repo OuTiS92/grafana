@@ -4,6 +4,7 @@ clear
 echo "started ... "
 sleep 1 
 clear 
+filetelegraf='/etc/telegraf/telegraf.conf'
 
 apt update && apt install  lolcat  && apt install figlet >> /dev/null
 clear 

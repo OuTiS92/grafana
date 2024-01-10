@@ -22,11 +22,9 @@ if systemctl is-active --quiet influxdb ; then
 	#echo "service infulxdb is running ..."
 	#echo "I was getting port alrady in use error ... " 
 	#sleep 2 
-	influx << EOF
-	create database telegraf 
-	create database telegraf with password 'root'
+	influx  -execute "create database telegraf" 
+	influx -execute  "create user telegraf with password 'root'"
 	exit
-EOF
 	sleep 1
 	apt install telegraf 
 	systemctl start telegraf 
@@ -38,7 +36,7 @@ EOF
 		systemctl restart telegraf 
 		sleep 1 
 		wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-		grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
+	#	grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
 		apt update && apt install grafana 
 		systemctl start grafana-server
 		if systemctl is-active --quiet grafana; then 

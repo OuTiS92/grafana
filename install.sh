@@ -52,8 +52,7 @@ if systemctl is-active --quiet grafana-server ; then
 			echo 	"Username : admin " | lolcat -d -a -t -s
 			echo 	"Password : admin " | lolcat -d -a -t -s
 			echo "  "
-			echo " "
-			echo    " username database influxdb : telegraf  and password : root" | lolcat -d -a -t -s   
+			echo    " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s   
 			
 else 
 			clear

@@ -25,7 +25,7 @@ if systemctl is-active --quiet influxdb ; then
 	influx  -execute "create database telegraf" 
 	influx -execute  "create user telegraf with password 'root'"
 	#exit
-	apt install telegraf 
+	apt install telegraf -y
 	systemctl start telegraf 
 	systemctl enable telegraf
 	if  systemctl is-active --quiet telegraf; then 
@@ -35,7 +35,7 @@ if systemctl is-active --quiet influxdb ; then
 		systemctl restart telegraf 
 		wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 		#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
-		apt update && apt install grafana 
+		apt update -y  && apt install grafana -y  
 		systemctl start grafana-server
 		if systemctl is-active --quiet grafana; then 
 			systemctl enable grafana-server

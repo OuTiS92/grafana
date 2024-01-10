@@ -24,7 +24,7 @@ if systemctl is-active --quiet influxdb ; then
 	#sleep 2 
 	influx  -execute "create database telegraf" 
 	influx -execute  "create user telegraf with password 'root'"
-	exit
+	#exit
 	sleep 1
 	apt install telegraf 
 	systemctl start telegraf 

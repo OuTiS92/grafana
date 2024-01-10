@@ -26,7 +26,7 @@ if systemctl is-active --quiet influxdb ; then
 	influx -execute  "create user telegraf with password 'root'"
 	#exit
 	apt install telegraf -y
-	mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
+	#mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
 	touch /etc/telegraf/telegraf.conf
 	cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 	systemctl start telegraf 

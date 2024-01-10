@@ -47,10 +47,13 @@ if systemctl is-active --quiet grafana-server ; then
 			sleep 2 
 			echo "fnished instation grafana (+ influxdb ) "
 			echo  "    "
-			echo    "go to browser and enter   http://yourip:3000"	
-			echo 	"Username : admin "
-			echo 	"Password : admin "
-			echo    " username database influxdb : telegraf  and password : root"  
+			echo    "go to browser and enter  
+				http://yourip:3000" | lolcat -d -a -t -s 	
+			echo 	"Username : admin " | lolcat -d -a -t -s
+			echo 	"Password : admin " | lolcat -d -a -t -s
+			echo "  "
+			echo " "
+			echo    " username database influxdb : telegraf  and password : root" | lolcat -d -a -t -s   
 			
 else 
 			clear

@@ -31,7 +31,7 @@ if systemctl is-active --quiet influxdb ; then
 	cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 	systemctl start telegraf 
 	systemctl enable telegraf
-	if  systemctl is-active --quiet telegraf ; then 
+if  systemctl is-active --quiet telegraf ; then 
 		
 		#mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
 		#touch /etc/telegraf/telegraf.conf
@@ -41,7 +41,7 @@ if systemctl is-active --quiet influxdb ; then
 		#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
 		apt update -y  && apt install grafana -y  
 		systemctl start grafana-server
-		if systemctl is-active --quiet grafana; then 
+if systemctl is-active --quiet grafana; then 
 			systemctl enable grafana-server
 			sleep 2 
 			echo "fnished instation grafana (+ influxdb ) "
@@ -51,14 +51,14 @@ if systemctl is-active --quiet influxdb ; then
 			echo 	"Password : admin "
 			echo    " username database influxdb : telegraf  and password : root"  
 			
-		else 
+else 
 			echo "service grafana not running !!!!!"
 			exit
-		fi
-	else 
+fi
+else 
 		echo "service influxdb not running !!!!!"
 		exit
-	fi
+fi
 
 
 else 

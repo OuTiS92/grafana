@@ -1,5 +1,4 @@
 #/bin/bash 
-
 sleep 1 
 clear 
 echo "started ... "

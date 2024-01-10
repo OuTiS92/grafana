@@ -1,6 +1,7 @@
 # grafana
 Install Grafana and Import Dashboards (mini)
 
+Please Run  sudo Installer  =>  ( sudo ./install.sh
 
 
 Preview :

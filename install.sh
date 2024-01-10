@@ -22,11 +22,11 @@ if systemctl is-active --quiet influxdb ; then
 	#echo "service infulxdb is running ..."
 	#echo "I was getting port alrady in use error ... " 
 	#sleep 2 
-	influx
-	sleep 1
+	influx << EOF
 	create database telegraf 
 	create database telegraf with password 'root'
 	exit
+EOF
 	sleep 1
 	apt install telegraf 
 	systemctl start telegraf 

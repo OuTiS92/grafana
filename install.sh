@@ -43,6 +43,7 @@ if  systemctl is-active --quiet telegraf ; then
 		systemctl start grafana-server
 if systemctl is-active --quiet grafana-server ; then 
 			systemctl enable grafana-server
+			clear
 			sleep 2 
 			echo "fnished instation grafana (+ influxdb ) "
 			echo  "    "
@@ -52,16 +53,21 @@ if systemctl is-active --quiet grafana-server ; then
 			echo    " username database influxdb : telegraf  and password : root"  
 			
 else 
+			clear
+			echo "======================================="
+			echo "  "
 			echo "service grafana not running !!!!!"
 			exit
 fi
 else 
+		clear
 		echo "service influxdb not running !!!!!"
 		exit
 fi
 
 
 else 
+	clear
 	echo " service influxdb not runnint !!!!!!"
 	exit
 fi

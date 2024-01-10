@@ -30,7 +30,7 @@ if systemctl is-active --quiet influxdb ; then
 	systemctl enable telegraf
 	if  systemctl is-active --quiet telegraf; then 
 		
-		cp /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
+		mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
 		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 		systemctl restart telegraf 
 		wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -

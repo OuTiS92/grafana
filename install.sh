@@ -44,7 +44,6 @@ if systemctl is-active --quiet influxdb ; then
 		if systemctl is-active --quiet grafana; then 
 			systemctl enable grafana-server
 			sleep 2 
-			clear 
 			echo "fnished instation grafana (+ influxdb ) "
 			echo  "    "
 			echo    "go to browser and enter   http://yourip:3000"	
@@ -54,9 +53,12 @@ if systemctl is-active --quiet influxdb ; then
 			
 		else 
 			echo "service grafana not running !!!!!"
+			exit
+		fi
 	else 
 		echo "service influxdb not running !!!!!"
-	
+		exit
+	fi
 
 
 else 

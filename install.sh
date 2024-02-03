@@ -39,6 +39,31 @@ detect_distribution() {
 
 
 
+chek_dependecies() {
+	detect_distribution
+
+	local dependenxies=("wget" "unzip" "git" "curl" "tar" "lolcat" "figlet" "influxdb" "influxdb-client")
+	
+	for dep in "${dependenxies[@]}"; do
+		if ! command -v "${dep}" &> /dev/null; then
+			echo "${dep} is not installed, installing ...."
+			sudo "${package_manager}" install "${dep}" -y 
+		fi
+	done
+}
+
+#apt update && apt install  lolcat  && apt install figlet >> /dev/null
+#clear 
+#sleep 1
+
+
+
+check_install_influxd() {
+	if [ -f "/etc/systemd/system/influxd.service"]; then 
+		echo "the service is already installed."
+		exit 1
+	fi
+}
 
 
 
@@ -46,9 +71,11 @@ detect_distribution() {
 
 
 
-apt update && apt install  lolcat  && apt install figlet >> /dev/null
-clear 
-sleep 1
+
+
+
+
+
 figlet github OuTiS92 | lolcat -t -s -d 
 
 sleep 3 

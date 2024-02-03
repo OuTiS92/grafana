@@ -6,6 +6,46 @@ sleep 1
 clear 
 filetelegraf='/etc/telegraf/telegraf.conf'
 
+
+
+
+
+root_access(){
+	#check if script is runnig as root 
+	if ["$EUID" -ne 0 ]; then 
+		echo "this script requires root access . please run as root."
+		exit 1 
+	fi
+}
+
+
+
+detect_distribution() {
+	local supported_distributions=("ubuntu" "debian")
+
+	if [ -f /etc/os-realease ]; then
+		source /etc/os-release
+		if [[ "${ID}" = "ubuntu" || "${ID}" = "debian" ]];then
+			package_manager="apt-get"
+		else
+			echo "Unsupported distribution!!"
+			exit 1
+		fi
+	else 
+		echo "Unsupported distribution!!"
+		exit 1
+	fi
+}
+
+
+
+
+
+
+
+
+
+
 apt update && apt install  lolcat  && apt install figlet >> /dev/null
 clear 
 sleep 1

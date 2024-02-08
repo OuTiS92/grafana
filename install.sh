@@ -237,76 +237,78 @@ install_selected_service() {
 }
 
 
+
+figlet() {
+	figlet github OuTiS92 | lolcat -t -s -d
+}
+influx_start_service() {
+	systemctl unmask influxdb.service
+	 systemctl start influxdb
+	 systemctl enable influxdb 
+ }
+
+
+influx_service_active() {
+	if systemctl is-active --quiet influxdb ; then
+		influx  -execute "create database telegraf"
+		influx -execute  "create user telegraf with password 'root'"
+		touch /etc/telegraf/telegraf.conf
+		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
+	else
+		clear
+		echo "======================================="
+		echo "  "
+		echo "service influx not running !!!!!"
+		exit 1
+	fi
+	
+}
+telegraf_service() {
+	systemctl start telegraf
+	systemctl enable telegraf
+	if systemctl is-active --quiet telegraf ; then
+		systemctl restart telegraf
+	else
+		clear
+		echo "======================================="
+		echo "  "
+		echo "service telegraf not running !!!!!"
+		exit 1
+	fi
+}
+grafana_service() {
+	systemctl start grafana-server
+	if systemctl is-active --quiet grafana-server ; then
+		systemctl enable grafana-server
+		clear
+		sleep 2 
+		echo "fnished instation grafana (+ influxdb ) "
+		echo  "    "
+		echo    "go to browser and enter  
+			http://yourip:3000" | lolcat -d -a -t -s 	
+		echo 	"Username : admin " | lolcat -d -a -t -s
+		echo 	"Password : admin " | lolcat -d -a -t -s
+		echo "  "
+		echo    " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
+	else 
+		clear
+		echo "======================================="
+		echo "  "
+		echo "service grafana not running !!!!!"
+		exit 1
+	fi
+}
+
 install_uptime() {
 
-	#apt update && apt install  lolcat  && apt install figlet >> /dev/null
-	#clear 
-	#sleep 1
 	root_access
 	check_dependencies
 	check_installed_influx
-	clear
-	figlet github OuTiS92 | lolcat -t -s -d 
-
-	sleep 3 
-	#apt install influxdb influxdb-client 
-	systemctl unmask influxdb.service
-
-	systemctl start influxdb
-	systemctl enable influxdb
-
-	if systemctl is-active --quiet influxdb ; then
-		#echo "service infulxdb is running ..."
-		#echo "I was getting port alrady in use error ... " 
-		#sleep 2 
-		influx  -execute "create database telegraf" 
-		influx -execute  "create user telegraf with password 'root'"
-		#exit
-		apt install telegraf -y
-		#mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
-		touch /etc/telegraf/telegraf.conf
-		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
-		systemctl start telegraf 
-		systemctl enable telegraf
-		if  systemctl is-active --quiet telegraf ; then 
-		
-			#mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
-			#touch /etc/telegraf/telegraf.conf
-			#cat ./telegraf.conf > /etc/telegraf/telegraf.conf
-			systemctl restart telegraf 
-			#wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-			#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
-			#apt update -y  && apt install grafana -y  
-			systemctl start grafana-server
-		if systemctl is-active --quiet grafana-server ; then 
-				systemctl enable grafana-server
-				clear
-				sleep 2 
-				echo "fnished instation grafana (+ influxdb ) "
-				echo  "    "
-				echo    "go to browser and enter  
-					http://yourip:3000" | lolcat -d -a -t -s 	
-				echo 	"Username : admin " | lolcat -d -a -t -s
-				echo 	"Password : admin " | lolcat -d -a -t -s
-				echo "  "
-				echo    " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s   
-			else 
-				clear
-				echo "======================================="
-				echo "  "
-				echo "service grafana not running !!!!!"
-				exit
-		fi
-	else 
-		clear
-		echo "service influxdb not running !!!!!"
-		exit
-		fi
-	else 
-		clear
-		echo " service influxdb not runnig !!!!!!"
-		exit
-	fi
+	figlet
+	influx_start_service
+	influx_service_active
+	telegraf_service
+	grafana_service
 
 }
 

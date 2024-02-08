@@ -177,15 +177,15 @@ sudo systemctl start mysql_exporter
 
 install_yamel_prometheus() {
 	cd /etc/prometheus/
-	cat <<EOL >> 
+	cat <<EOF >> prometheus.yml 
 - job_name: "mysqld"
 
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ["localhost:9104"]
-EOL
+      - targets: ["localhost:9104"]"
+EOF
 sudo systemctl restart prometheus.service
 
 

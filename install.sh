@@ -189,7 +189,7 @@ sudo systemctl start mysql_exporter
 
 install_yamel_prometheus() {
 cd ./prometheus-2.45.3.linux-amd64
-	cat <<EOF >> prometheus.yml 
+	cat <<EOF >> ./prometheus-2.45.3.linux-amd64/prometheus.yml 
 - job_name: "mysqld"
 
     # metrics_path defaults to '/metrics'

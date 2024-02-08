@@ -78,7 +78,7 @@ sudo systemctl start grafana-server
 
 install_prometheus() {
 	wget -qO- https://github.com/prometheus/prometheus/releases/download/v2.45.3/prometheus-2.45.3.linux-amd64.tar.gz | tar xz 
-	cd prometheus-2.45.3.linux-amd64 
+	cd prometheus-2.*
 }
 
 check_install_prometheus() {

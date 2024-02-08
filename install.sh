@@ -77,7 +77,7 @@ sudo systemctl enable grafana-server.service
 
 
 
-check_install_mysql() {
+install_prometheus() {
 	wget "https://github.com/prometheus/prometheus/releases/download/v2.45.3/prometheus-2.45.3.linux-amd64.tar.gz" -O tar xvfz prometheus-2.30.0.linux-amd64.tar.gz && cd prometheus-2.45.3.linux-amd64 
 }
 
@@ -327,7 +327,7 @@ install_mysql() {
 	detect_distribution
 	chek_dependecies
 	install_grafana
-	check_install_mysql
+	install_prometheus
 	check_install_prometheus
 	install_service_prometheus
 	add_user_prometheus

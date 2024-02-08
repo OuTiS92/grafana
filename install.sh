@@ -187,6 +187,7 @@ install_yamel_prometheus() {
       - targets: ["localhost:9104"]"
 EOF
 sudo systemctl restart prometheus.service
+}
 
 
 

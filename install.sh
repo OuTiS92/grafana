@@ -229,6 +229,8 @@ install_selected_service() {
 
 	if [[ "$choice" == "mysql" ]]; then 
 		install_mysql
+	elif
+		unistall
 	else
 		install_uptime
 	fi
@@ -371,6 +373,7 @@ echo -e "${yellow}******************************${rest}"
 echo ""
 echo ""
 echo -e "${purple} --------------${cyan}version 1.0.0 ${purple}--------------${rest}"
+echo -r "${install_selected_service}"
 read -p "Please choose: " choice
 
 case $choice in 

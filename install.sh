@@ -325,7 +325,7 @@ unistall_mysql() {
 install_mysql() {
 	root_access
 	detect_distribution
-	chek_dependecies
+	check_dependencies
 	install_grafana
 	check_install_prometheus
 	install_prometheus

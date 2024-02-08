@@ -327,8 +327,8 @@ install_mysql() {
 	detect_distribution
 	chek_dependecies
 	install_grafana
-	install_prometheus
 	check_install_prometheus
+	install_prometheus
 	install_service_prometheus
 	add_user_prometheus
 	check_mysql_export_service

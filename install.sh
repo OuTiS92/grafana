@@ -372,7 +372,6 @@ echo -e ""
 echo -e ""
 echo -e "${purple} --------------${cyan}version 1.0.0 ${purple}--------------${rest}"
 echo -e ""
-echo -e "${install_selected_service}"
 echo -e ""
 read -p "Please choose: " choice
 echo -e ""

@@ -72,8 +72,8 @@ unistall_all(){
 	rm -rf prometheus.yml
 	rm -rf mysql_exporter.service
 	rm -rf influxd.service
-	sudo apt-get purge influxdb
-	sudo apt-get purge grafana 
+	sudo apt-get purge influxdb -y
+	sudo apt-get purge grafana -y
 	rm -rf  /etc/grafana
 	rm -rf /etc/influxdb
 }

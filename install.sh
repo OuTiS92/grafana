@@ -80,7 +80,7 @@ check_install_prometheus() {
 
 
 install_service_prometheus() {
-	cd cd /etc/systemd/system
+	cd /etc/systemd/system
 	cat <<EOL > prometheus.service
 [Unit]
 Description=Prometheus
@@ -325,7 +325,8 @@ install_mysql() {
 	insert_mysql_query
 	install_service_mysql_export_cnf
 	install_service_mysql_export
-	install_yamel_prometheu
+	install_yamel_prometheus
+
 }
 
 

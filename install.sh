@@ -82,7 +82,7 @@ install_prometheus() {
 
 check_install_prometheus() {
 	if [ -f "/etc/systemd/system/prometheus.service" ]; then
-		echo "the service is already install"
+		echo "the service prometheus is already install"
 		exit 1 
 	fi
 }

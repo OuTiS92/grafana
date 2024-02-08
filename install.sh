@@ -4,7 +4,6 @@ clear
 echo "started ... "
 sleep 1 
 clear 
-filetelegraf='/etc/telegraf/telegraf.conf'
 
 
 
@@ -23,12 +22,11 @@ rest='\033[0m'
 
 root_access(){
 	#check if script is runnig as root 
-	if ["$EUID" -ne 0 ]; then 
+	if [ "$EUID" -ne 0 ]; then 
 		echo "this script requires root access . please run as root."
 		exit 1 
 	fi
 }
-
 
 
 detect_distribution() {

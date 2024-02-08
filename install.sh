@@ -74,7 +74,7 @@ unistall_all(){
 	rm -rf influxd.service
 	sudo apt-get purge influxdb -y
 	sudo apt-get purge grafana -y
-	sudo apt-get purge telegraf
+	sudo apt-get purge telegraf -y
 	rm -rf  /etc/grafana
 	rm -rf /etc/telegraf
 	rm -rf /etc/influxdb
@@ -268,44 +268,43 @@ install_uptime() {
 		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 		systemctl start telegraf 
 		systemctl enable telegraf
-	if  systemctl is-active --quiet telegraf ; then 
+		if  systemctl is-active --quiet telegraf ; then 
 		
-		#mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
-		#touch /etc/telegraf/telegraf.conf
-		#cat ./telegraf.conf > /etc/telegraf/telegraf.conf
-		systemctl restart telegraf 
-		#wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
-		#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
-		#apt update -y  && apt install grafana -y  
-		systemctl start grafana-server
-	if systemctl is-active --quiet grafana-server ; then 
-			systemctl enable grafana-server
-			clear
-			sleep 2 
-			echo "fnished instation grafana (+ influxdb ) "
-			echo  "    "
-			echo    "go to browser and enter  
-				http://yourip:3000" | lolcat -d -a -t -s 	
-			echo 	"Username : admin " | lolcat -d -a -t -s
-			echo 	"Password : admin " | lolcat -d -a -t -s
-			echo "  "
-			echo    " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s   
-			
-	else 
-			clear
-			echo "======================================="
-			echo "  "
-			echo "service grafana not running !!!!!"
-			exit
-	fi
+			#mv /etc/telegraf/telegraf.conf /etc/telegraf/telegraf.conf.default
+			#touch /etc/telegraf/telegraf.conf
+			#cat ./telegraf.conf > /etc/telegraf/telegraf.conf
+			systemctl restart telegraf 
+			#wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+			#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
+			#apt update -y  && apt install grafana -y  
+			systemctl start grafana-server
+		if systemctl is-active --quiet grafana-server ; then 
+				systemctl enable grafana-server
+				clear
+				sleep 2 
+				echo "fnished instation grafana (+ influxdb ) "
+				echo  "    "
+				echo    "go to browser and enter  
+					http://yourip:3000" | lolcat -d -a -t -s 	
+				echo 	"Username : admin " | lolcat -d -a -t -s
+				echo 	"Password : admin " | lolcat -d -a -t -s
+				echo "  "
+				echo    " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s   
+			else 
+				clear
+				echo "======================================="
+				echo "  "
+				echo "service grafana not running !!!!!"
+				exit
+		fi
 	else 
 		clear
 		echo "service influxdb not running !!!!!"
 		exit
-	fi
+		fi
 	else 
 		clear
-		echo " service influxdb not runnint !!!!!!"
+		echo " service influxdb not runnig !!!!!!"
 		exit
 	fi
 

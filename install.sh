@@ -69,9 +69,8 @@ install_grafana() {
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list && sudo apt update && sudo apt install -y grafana
 
 sudo systemctl unmask grafana-server.service
-sudo systemctl start grafana-server
 sudo systemctl enable grafana-server.service
-
+sudo systemctl start grafana-server
 }
 
 

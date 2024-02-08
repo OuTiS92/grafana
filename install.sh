@@ -188,7 +188,7 @@ sudo systemctl start mysql_exporter
 
 
 install_yamel_prometheus() {
-	cd /etc/prometheus/
+	cd prometheus-2.45.3.linux-amd64
 	cat <<EOF >> prometheus.yml 
 - job_name: "mysqld"
 

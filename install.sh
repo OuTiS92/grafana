@@ -8,6 +8,17 @@ filetelegraf='/etc/telegraf/telegraf.conf'
 
 
 
+#colors
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+purple='\033[0;35m'
+cyan='\033[0;36m'
+white='\033[0;37m'
+rest='\033[0m'
+
+
 
 
 root_access(){
@@ -112,7 +123,7 @@ insert_mysql_query() {
 EOF
 }
 
-install_service_mysql_export() {
+install_service_mysql_export_cnf() {
 	cat <<EOL > /etc/.mysqld_exporter.cnf
 [client]
 user=mysqld_exporter
@@ -161,6 +172,22 @@ sudo systemctl daemon-reload
 sudo systemctl enable mysql_exporter
 sudo systemctl start mysql_exporter
 }
+
+
+
+install_yamel_prometheus() {
+	cd /etc/prometheus/
+	cat <<EOL >> 
+- job_name: "mysqld"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["localhost:9104"]
+EOL
+sudo systemctl restart prometheus.service
+
 
 
 
@@ -259,19 +286,69 @@ install_uptime() {
 }
 
 
+
+unistall_influxdb() {
+	if [ ! -f "/etc/systemd/system/influxd.service" ]; then 
+		echo "influx-db not installed."
+		return
+	fi
+	sudo systemctl  stop influxdb.service
+	sudo systemctl  disable influxdb.service
+	sudo rm -rf /etc/systemd/system/influxd.service
+
+}
+
+
+unistall_mysql() {
+	if [ ! -f "/etc/systemd/system/mysql_exporter.service"]; then 
+		echo "mysql exporter in not installed"
+		return
+	fi
+	sudo systemctl  stop mysql_exporter.service
+	sudo systemctl disable mysql_exporter.service
+	sudo rm -rf /etc/systemd/system/mysql_exporter.service
+}
+
+
 install_mysql() {
+	root_access
+	detect_distribution
+	chek_dependecies
+	check_install_mysql
+	check_install_prometheus
+	install_service_prometheus
+	add_user_prometheus
+	check_mysql_export_service
+	install_mysql_exported
+	insert_mysql_query
+	install_service_mysql_export_cnf
+	install_service_mysql_export
+	install_yamel_prometheu
 
 
 
 
 
+clear 
 
+echo -e "${cyan}By --> outis92  * ${rest}"
+echo -e "${yellow}******************************${rest}"
+echo -e " ${purple}--------#- Grafana -#--------${rest}"
+echo -e "${green}1) Install mysql${rest}"
+echo -e "${green}1) Install uptime${rest}"
+echo -e "${yellow} ----------------------------${rest}"
+echo -e "${purple} --------------${cyan}version 1.0.0 ${purple}--------------${rest}"
+read -p "Please choose: " choice
 
-
-
-
-
-
-
-
-
+case $choise in 
+	1)
+		install_mysql
+		;;
+	2)
+		install_uptime
+		;;
+	0)
+		exit
+		;;
+	*)
+esac

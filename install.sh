@@ -351,4 +351,7 @@ case $choise in
 		exit
 		;;
 	*)
+		echo " Invalid choice. Please try again."
+		;;
+
 esac

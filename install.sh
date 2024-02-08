@@ -53,7 +53,7 @@ detect_distribution() {
 check_dependencies() {
     detect_distribution
 
-    local dependencies=("wget" "lsof" "iptables" "unzip" "gcc" "git" "curl" "tar")
+    local dependencies=("wget" "lsof" "iptables" "unzip" "gcc" "git" "curl" "tar" "mysql-server" " influxdb"  )
     
     for dep in "${dependencies[@]}"; do
         if ! command -v "${dep}" &> /dev/null; then
@@ -63,6 +63,16 @@ check_dependencies() {
     done
 }
 
+
+install_grafana() {
+	get -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list && sudo apt update && sudo apt install -y grafana
+
+sudo systemctl unmask grafana-server.service
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server.service
+
+}
 
 
 
@@ -316,6 +326,7 @@ install_mysql() {
 	root_access
 	detect_distribution
 	chek_dependecies
+	install_grafana
 	check_install_mysql
 	check_install_prometheus
 	install_service_prometheus

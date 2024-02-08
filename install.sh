@@ -28,37 +28,42 @@ root_access() {
     fi
 }
 
+
+
 detect_distribution() {
-	local supported_distributions=("ubuntu" "debian")
+    # Detect the Linux distribution
+    local supported_distributions=("ubuntu" "debian" "centos" "fedora")
+    
+    if [ -f /etc/os-release ]; then
+        source /etc/os-release
+        if [[ "${ID}" = "ubuntu" || "${ID}" = "debian" || "${ID}" = "centos" || "${ID}" = "fedora" ]]; then
+            package_manager="apt-get"
+            [ "${ID}" = "centos" ] && package_manager="yum"
+            [ "${ID}" = "fedora" ] && package_manager="dnf"
+        else
+            echo "Unsupported distribution!"
+            exit 1
+        fi
+    else
+        echo "Unsupported distribution!"
+        exit 1
+    fi
+}
 
-	if [ -f /etc/os-realease ]; then
-		source /etc/os-release
-		if [[ "${ID}" = "ubuntu" || "${ID}" = "debian" ]];then
-			package_manager="apt-get"
-		else
-			echo "Unsupported distribution!!"
-			exit 1
-		fi
-	else 
-		echo "Unsupported distribution!!"
-		exit 1
-	fi
+check_dependencies() {
+    detect_distribution
+
+    local dependencies=("wget" "lsof" "iptables" "unzip" "gcc" "git" "curl" "tar")
+    
+    for dep in "${dependencies[@]}"; do
+        if ! command -v "${dep}" &> /dev/null; then
+            echo "${dep} is not installed. Installing..."
+            sudo "${package_manager}" install "${dep}" -y
+        fi
+    done
 }
 
 
-
-chek_dependecies() {
-	detect_distribution
-
-	local dependenxies=("wget" "unzip" "git" "curl" "tar" "lolcat" "figlet" "influxdb" "influxdb-client" "mysql-server"  )
-	
-	for dep in "${dependenxies[@]}"; do
-		if ! command -v "${dep}" &> /dev/null; then
-			echo "${dep} is not installed, installing ...."
-			sudo "${package_manager}" install "${dep}" -y 
-		fi
-	done
-}
 
 
 

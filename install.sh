@@ -20,14 +20,13 @@ rest='\033[0m'
 
 
 
-root_access(){
-	#check if script is runnig as root 
-	if [ "$EUID" -ne 0 ]; then 
-		echo "this script requires root access . please run as root."
-		exit 1 
-	fi
+root_access() {
+    # Check if the script is running as root
+    if [ "$EUID" -ne 0 ]; then
+        echo "This script requires root access. please run as root."
+        exit 1
+    fi
 }
-
 
 detect_distribution() {
 	local supported_distributions=("ubuntu" "debian")

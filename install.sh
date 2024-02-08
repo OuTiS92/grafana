@@ -53,7 +53,7 @@ detect_distribution() {
 check_dependencies() {
     detect_distribution
 
-    local dependencies=("wget" "figlet" "lolcat" "unzip" "gcc" "git" "curl" "tar" "mysql-server" " influxdb"  )
+    local dependencies=("wget" "figlet" "lolcat" "unzip" "gcc" "git" "curl" "tar" "mysql-server" " influxdb" "influxdb-client"  )
     
     for dep in "${dependencies[@]}"; do
         if ! command -v "${dep}" &> /dev/null; then
@@ -74,7 +74,9 @@ unistall_all(){
 	rm -rf influxd.service
 	sudo apt-get purge influxdb -y
 	sudo apt-get purge grafana -y
+	sudo apt-get purge telegraf
 	rm -rf  /etc/grafana
+	rm -rf /etc/telegraf
 	rm -rf /etc/influxdb
 }
 
@@ -243,12 +245,11 @@ install_uptime() {
 	root_access
 	check_dependencies
 	check_installed_influx
-
-
+	clear
 	figlet github OuTiS92 | lolcat -t -s -d 
 
 	sleep 3 
-	apt install influxdb influxdb-client 
+	#apt install influxdb influxdb-client 
 	systemctl unmask influxdb.service
 
 	systemctl start influxdb
@@ -273,9 +274,9 @@ install_uptime() {
 		#touch /etc/telegraf/telegraf.conf
 		#cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 		systemctl restart telegraf 
-		wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+		#wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 		#grep yes | sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main" 
-		apt update -y  && apt install grafana -y  
+		#apt update -y  && apt install grafana -y  
 		systemctl start grafana-server
 	if systemctl is-active --quiet grafana-server ; then 
 			systemctl enable grafana-server

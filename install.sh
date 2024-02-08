@@ -324,6 +324,7 @@ install_mysql() {
 	install_service_mysql_export_cnf
 	install_service_mysql_export
 	install_yamel_prometheu
+}
 
 
 

@@ -64,6 +64,20 @@ check_dependencies() {
 }
 
 
+
+
+unistall_all(){
+	cd /etc/systemd/system
+	rm -rf prometheus.service
+	rm -rf prometheus.yml
+	rm -rf mysql_exporter.service
+	rm -rf influxd.service
+	sudo apt-get purge influxdb
+	sudo apt-get purge grafana 
+	rm -rf  /etc/grafana
+	rm -rf /etc/influxdb
+}
+
 install_grafana() {
 	get -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list && sudo apt update && sudo apt install -y grafana
@@ -351,6 +365,7 @@ echo -e " ${purple}--------#- Grafana install -#--------${rest}"
 echo -e "${yellow}******************************${rest}"
 echo -e "${green}1) Install mysql${rest}"
 echo -e "${green}2) Install uptime${rest}"
+echo -e "${red}3) unistall${rest}"
 echo -e "${cyan}0) Exit ${rest}"
 echo -e "${yellow}******************************${rest}"
 echo ""
@@ -364,6 +379,9 @@ case $choice in
 		;;
 	2)
 		install_uptime
+		;;
+	3)
+		unistall
 		;;
 	0)
 		exit

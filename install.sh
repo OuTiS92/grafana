@@ -122,7 +122,7 @@ install_mysql_exported() {
 
 check_mysql_export_service() {
 	if [ -f "/etc/systemd/system/mysql_exporter.service" ]; then
-		echo "the service is already install"
+		echo "the service mysql_exporter is already install"
 		exit 1
 	fi
 }

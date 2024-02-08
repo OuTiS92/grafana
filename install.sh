@@ -336,11 +336,12 @@ echo -e "${yellow}******************************${rest}"
 echo -e " ${purple}--------#- Grafana -#--------${rest}"
 echo -e "${green}1) Install mysql${rest}"
 echo -e "${green}1) Install uptime${rest}"
+echo "0) Exit"
 echo -e "${yellow} ----------------------------${rest}"
 echo -e "${purple} --------------${cyan}version 1.0.0 ${purple}--------------${rest}"
 read -p "Please choose: " choice
 
-case $choise in 
+case $choice in 
 	1)
 		install_mysql
 		;;

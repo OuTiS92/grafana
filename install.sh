@@ -230,7 +230,7 @@ install_selected_service() {
 	if [[ "$choice" == "mysql" ]]; then 
 		install_mysql
 	elif
-		unistall
+		unistall_all
 	else
 		install_uptime
 	fi

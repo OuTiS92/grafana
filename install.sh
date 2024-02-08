@@ -333,12 +333,14 @@ install_mysql() {
 clear 
 
 echo -e "${cyan}By --> outis92  * ${rest}"
+echo -e " ${purple}--------#- Grafana install -#--------${rest}"
 echo -e "${yellow}******************************${rest}"
-echo -e " ${purple}--------#- Grafana -#--------${rest}"
 echo -e "${green}1) Install mysql${rest}"
 echo -e "${green}2) Install uptime${rest}"
-echo "0) Exit"
-echo -e "${yellow} ----------------------------${rest}"
+echo -e "${cyan}0) Exit ${rest}"
+echo -e "${yellow}******************************${rest}"
+echo ""
+echo ""
 echo -e "${purple} --------------${cyan}version 1.0.0 ${purple}--------------${rest}"
 read -p "Please choose: " choice
 

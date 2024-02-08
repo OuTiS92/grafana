@@ -370,11 +370,14 @@ echo -e "${green}2) Install uptime${rest}"
 echo -e "${red}3) unistall${rest}"
 echo -e "${cyan}0) Exit ${rest}"
 echo -e "${yellow}******************************${rest}"
-echo ""
-echo ""
+echo -e ""
+echo -e ""
 echo -e "${purple} --------------${cyan}version 1.0.0 ${purple}--------------${rest}"
-echo -r "${install_selected_service}"
+echo -e ""
+echo -e "${install_selected_service}"
+echo -r ""
 read -p "Please choose: " choice
+echo -e ""
 
 case $choice in 
 	1)
@@ -384,7 +387,7 @@ case $choice in
 		install_uptime
 		;;
 	3)
-		unistall
+		unistall_all
 		;;
 	0)
 		exit

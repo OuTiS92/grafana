@@ -192,7 +192,7 @@ sudo systemctl restart prometheus.service
 
 
 check_installed_influx() {
-	if[ -f "/etc/systemd/system/influxd.service" ]; then
+	if [ -f "/etc/systemd/system/influxd.service" ]; then
 
 		echo "the service is already install"
 		exit 1

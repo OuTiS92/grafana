@@ -74,11 +74,14 @@ rm -rf mysql_exporter.service
 rm -rf influxd.service
 sudo apt-get purge influxdb -y
 sudo apt-get purge grafana -y
-sudo apt-get purge mysql-server -y
+sudo apt-get remove --purge mysql*
 sudo apt-get purge telegraf -y
 rm -rf  /etc/grafana
 rm -rf /etc/telegraf
 rm -rf /etc/influxdb
+sudo rm -rf /var/lib/mysql
+sudo rm -rf /etc/mysql
+sudo apt-get autoremove
 sudo apt-get autoclean
 }
 

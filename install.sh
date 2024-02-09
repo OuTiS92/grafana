@@ -301,7 +301,7 @@ install_uptime() {
 
 	root_access
 	check_dependencies
-	check_installed_influx
+#	check_installed_influx
 	figlet
 	influx_start_service
 	influx_service_active

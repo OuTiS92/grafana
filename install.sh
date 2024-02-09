@@ -78,6 +78,7 @@ sudo apt-get purge telegraf -y
 rm -rf  /etc/grafana
 rm -rf /etc/telegraf
 rm -rf /etc/influxdb
+sudo apt-get autoclean
 }
 
 install_grafana() {
@@ -304,6 +305,8 @@ install_uptime() {
 	check_dependencies
 #	check_installed_influx
 	figlet
+	detect_distribution
+	install_grafana
 	influx_start_service
 	influx_service_active
 	telegraf_service

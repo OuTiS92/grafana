@@ -81,8 +81,8 @@ rm -rf /etc/telegraf
 rm -rf /etc/influxdb
 sudo rm -rf /var/lib/mysql
 sudo rm -rf /etc/mysql
-sudo apt-get autoremove
-sudo apt-get autoclean
+sudo apt-get autoremove -y 
+sudo apt-get autoclean -y
 }
 
 install_grafana() {
@@ -306,7 +306,9 @@ grafana_service() {
 
 
 
-
+information() {
+	echo "finsi uptime . information:"
+	echo ""
 
 
 

@@ -289,12 +289,7 @@ grafana_service() {
 		clear
 		echo -e "fnished instation grafana (+ influxdb ) "
 		echo  -e "    "
-		echo   "go to browser and enter  
-			http://yourip:3000" | lolcat -d -a -t -s 	
-		echo 	"Username : admin " | lolcat -d -a -t -s
-		echo "Password : admin " | lolcat -d -a -t -s
-		echo -e "  "
-		echo   " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
+		information
 	else 
 		clear
 		echo "======================================="
@@ -308,7 +303,12 @@ grafana_service() {
 
 information() {
 	echo "finsi uptime . information:"
-	echo ""
+	echo " http://yourip:3000" | lolcat -d -a -t -s 
+	echo "Username : admin " | lolcat -d -a -t -s
+	echo "Password : admin " | lolcat -d -a -t -s
+	echo -e "  "
+	echo   " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
+}
 
 
 

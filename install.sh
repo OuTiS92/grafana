@@ -299,7 +299,11 @@ grafana_service() {
 
 
 information() {
-	echo   " informaton influxdb : telegraf  username and password : root , Password : admin  , Username : admin http://yourip:3000" | lolcat -d -a -t -s
+
+	echo "Grafana information :"
+	echo "your address grafa : http://yourip:3000"
+	echo "Password : admin  , Username : admin "
+	echo   " informaton influxdb : telegraf  username and password : root " | lolcat -d -a -t -s
 }
 
 

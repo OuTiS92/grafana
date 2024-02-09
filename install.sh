@@ -369,11 +369,12 @@ install_mysql() {
 
 clear
 figlet "github OuTiS92" | lolcat -t -s -d
-
 sleep 1
-
+echo -e " "
+echo -e " "
 echo -e "${cyan}By --> outis92  * ${rest}"
 echo -e " ${purple}--------#- Grafana install -#--------${rest}"
+echo -e " "
 echo -e "${yellow}******************************${rest}"
 echo -e "${green}1) Install mysql${rest}"
 echo -e "${green}2) Install uptime${rest}"

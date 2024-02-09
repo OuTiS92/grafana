@@ -368,7 +368,8 @@ install_mysql() {
 
 
 clear
-figlet github OuTiS92 | lolcat -t -s -d
+figlet "github OuTiS92" | lolcat -t -s -d
+
 sleep 1
 
 echo -e "${cyan}By --> outis92  * ${rest}"

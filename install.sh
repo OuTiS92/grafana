@@ -371,6 +371,8 @@ install_mysql() {
 
 
 clear 
+figlet
+sleep 
 
 echo -e "${cyan}By --> outis92  * ${rest}"
 echo -e " ${purple}--------#- Grafana install -#--------${rest}"

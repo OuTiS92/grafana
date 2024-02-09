@@ -5,10 +5,9 @@ Please Run  sudo Installer  =>  ( sudo ./install.sh )
 
 ## Install 
 
-<code> bash <(curl -fsSL https://raw.githubusercontent.com/OuTiS92/grafana/main/install.sh) </code>
-
-
-
+```
+ bash <(curl -fsSL https://raw.githubusercontent.com/OuTiS92/grafana/main/install.sh) 
+```
 
 1 . 
 

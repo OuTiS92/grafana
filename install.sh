@@ -67,17 +67,17 @@ check_dependencies() {
 
 
 unistall_all(){
-	cd /etc/systemd/system
-	rm -rf prometheus.service
-	rm -rf prometheus.yml
-	rm -rf mysql_exporter.service
-	rm -rf influxd.service
-	sudo apt-get purge influxdb -y
-	sudo apt-get purge grafana -y
-	sudo apt-get purge telegraf -y
-	rm -rf  /etc/grafana
-	rm -rf /etc/telegraf
-	rm -rf /etc/influxdb
+cd /etc/systemd/system
+rm -rf prometheus.service
+rm -rf prometheus.yml
+rm -rf mysql_exporter.service
+rm -rf influxd.service
+sudo apt-get purge influxdb -y
+sudo apt-get purge grafana -y
+sudo apt-get purge telegraf -y
+rm -rf  /etc/grafana
+rm -rf /etc/telegraf
+rm -rf /etc/influxdb
 }
 
 install_grafana() {

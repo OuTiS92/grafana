@@ -221,7 +221,7 @@ sudo systemctl restart prometheus.service
 
 check_installed_influx() {
 	if [ -f "/etc/systemd/system/influxd.service" ]; then
-		echo "the service is already install"
+		echo "the service influxd is already install"
 		exit 1
 	fi
 }
@@ -253,6 +253,7 @@ influx_service_active() {
 		influx  -execute "create database telegraf"
 		influx -execute  "create user telegraf with password 'root'"
 		touch /etc/telegraf/telegraf.conf
+		wget https://raw.githubusercontent.com/OuTiS92/grafana/main/telegraf.conf
 		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 	else
 		echo -e "======================================="

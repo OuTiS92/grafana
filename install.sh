@@ -355,6 +355,7 @@ install_mysql() {
 	install_grafana
 	check_install_prometheus
 	install_prometheus
+	install_yamel_prometheus
 	install_service_prometheus
 	add_user_prometheus
 	check_mysql_export_service
@@ -362,10 +363,8 @@ install_mysql() {
 	insert_mysql_query
 	install_service_mysql_export_cnf
 	install_service_mysql_export
-	install_yamel_prometheus
 	sleep 1
-	clear 
-
+	clear
 	echo "Fnish .... " | lolcat -d -a -t -s
 }
 

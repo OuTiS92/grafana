@@ -53,7 +53,7 @@ detect_distribution() {
 check_dependencies() {
     detect_distribution
 
-    local dependencies=("wget" "figlet" "lolcat" "unzip" "gcc" "git" "curl" "tar" "mysql-server" " influxdb" "influxdb-client"  )
+    local dependencies=("wget" "figlet" "lolcat" "unzip" "gcc" "git" "curl" "tar" "mysql-server" "influxdb" "influxdb-client" "telegraf" )
     
     for dep in "${dependencies[@]}"; do
         if ! command -v "${dep}" &> /dev/null; then
@@ -255,10 +255,9 @@ influx_service_active() {
 		touch /etc/telegraf/telegraf.conf
 		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 	else
-		clear
-		echo "======================================="
-		echo "  "
-		echo "service influx not running !!!!!"
+		echo -e "======================================="
+		echo -e "  "
+		echo -e "service influx not running !!!!!"
 		exit 1
 	fi
 	
@@ -270,9 +269,9 @@ telegraf_service() {
 		systemctl restart telegraf
 	else
 		clear
-		echo "======================================="
-		echo "  "
-		echo "service telegraf not running !!!!!"
+		echo -e "======================================="
+		echo -e "  "
+		echo -e "service telegraf not running !!!!!"
 		exit 1
 	fi
 }
@@ -281,15 +280,14 @@ grafana_service() {
 	if systemctl is-active --quiet grafana-server ; then
 		systemctl enable grafana-server
 		clear
-		sleep 2 
-		echo "fnished instation grafana (+ influxdb ) "
-		echo  "    "
-		echo    "go to browser and enter  
+		echo -e "fnished instation grafana (+ influxdb ) "
+		echo  -e "    "
+		echo -e  "go to browser and enter  
 			http://yourip:3000" | lolcat -d -a -t -s 	
-		echo 	"Username : admin " | lolcat -d -a -t -s
-		echo 	"Password : admin " | lolcat -d -a -t -s
-		echo "  "
-		echo    " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
+		echo -e	"Username : admin " | lolcat -d -a -t -s
+		echo -e	"Password : admin " | lolcat -d -a -t -s
+		echo -e "  "
+		echo -e  " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
 	else 
 		clear
 		echo "======================================="

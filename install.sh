@@ -250,11 +250,12 @@ influx_start_service() {
 
 
 influx_service_active() {
+	wget https://raw.githubusercontent.com/OuTiS92/grafana/main/telegraf.conf
 	if systemctl is-active --quiet influxdb ; then
 		influx  -execute "create database telegraf"
 		influx -execute  "create user telegraf with password 'root'"
 		touch /etc/telegraf/telegraf.conf
-		wget https://raw.githubusercontent.com/OuTiS92/grafana/main/telegraf.conf
+		#wget https://raw.githubusercontent.com/OuTiS92/grafana/main/telegraf.conf
 		cat ./telegraf.conf > /etc/telegraf/telegraf.conf
 	else
 		echo -e "======================================="

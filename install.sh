@@ -243,9 +243,6 @@ install_selected_service() {
 
 
 
-figlet() {
-	figlet github OuTiS92 | lolcat -t -s -d
-}
 influx_start_service() {
 	systemctl unmask influxdb.service
 	 systemctl start influxdb
@@ -370,9 +367,9 @@ install_mysql() {
 
 
 
-clear 
-figlet
-sleep 
+clear
+figlet github OuTiS92 | lolcat -t -s -d
+sleep 1
 
 echo -e "${cyan}By --> outis92  * ${rest}"
 echo -e " ${purple}--------#- Grafana install -#--------${rest}"

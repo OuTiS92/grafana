@@ -74,7 +74,7 @@ rm -rf mysql_exporter.service
 rm -rf influxd.service
 sudo apt-get purge influxdb -y
 sudo apt-get purge grafana -y
-sudo apt-get remove --purge mysql* -y > /dev/null 
+sudo apt-get remove --purge mysql-server 
 sudo apt-get purge telegraf -y
 rm -rf  /etc/grafana
 rm -rf /etc/telegraf
@@ -364,7 +364,9 @@ install_mysql() {
 	install_service_mysql_export
 	install_yamel_prometheus
 	sleep 1
-	echo "Fnish .... "
+	clear 
+
+	echo "Fnish .... " | lolcat -d -a -t -s
 }
 
 

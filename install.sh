@@ -291,10 +291,10 @@ grafana_service() {
 		echo  -e "    "
 		echo -e  "go to browser and enter  
 			http://yourip:3000" | lolcat -d -a -t -s 	
-		echo -e	"Username : admin " | lolcat -d -a -t -s
-		echo -e	"Password : admin " | lolcat -d -a -t -s
+		echo 	"Username : admin " | lolcat -d -a -t -s
+		echo "Password : admin " | lolcat -d -a -t -s
 		echo -e "  "
-		echo -e  " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
+		echo   " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
 	else 
 		clear
 		echo "======================================="
@@ -303,6 +303,12 @@ grafana_service() {
 		exit 1
 	fi
 }
+
+
+
+
+
+
 
 install_uptime() {
 

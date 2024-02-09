@@ -302,12 +302,7 @@ grafana_service() {
 
 
 information() {
-	echo "finsi uptime . information:"
-	echo " http://yourip:3000" | lolcat -d -a -t -s 
-	echo "Username : admin " | lolcat -d -a -t -s
-	echo "Password : admin " | lolcat -d -a -t -s
-	echo -e "  "
-	echo   " informaton influxdb : telegraf  username and password : root" | lolcat -d -a -t -s
+	echo   " informaton influxdb : telegraf  username and password : root , Password : admin  , Username : admin http://yourip:3000" | lolcat -d -a -t -s
 }
 
 

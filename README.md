@@ -3,9 +3,11 @@ Install Grafana and Import Dashboards (mini)
 
 Please Run  sudo Installer  =>  ( sudo ./install.sh )
 
-Install :
+## Install 
 
-bash <(curl -fsSL https://raw.githubusercontent.com/OuTiS92/grafana/main/install.sh)
+<code> bash <(curl -fsSL https://raw.githubusercontent.com/OuTiS92/grafana/main/install.sh) </code>
+
+
 
 
 1 . 

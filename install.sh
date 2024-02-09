@@ -312,7 +312,7 @@ install_uptime() {
 	root_access
 	check_dependencies
 #	check_installed_influx
-	figlet
+#	figlet
 	detect_distribution
 	install_grafana
 	influx_start_service

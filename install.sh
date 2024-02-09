@@ -289,7 +289,7 @@ grafana_service() {
 		clear
 		echo -e "fnished instation grafana (+ influxdb ) "
 		echo  -e "    "
-		echo -e  "go to browser and enter  
+		echo   "go to browser and enter  
 			http://yourip:3000" | lolcat -d -a -t -s 	
 		echo 	"Username : admin " | lolcat -d -a -t -s
 		echo "Password : admin " | lolcat -d -a -t -s

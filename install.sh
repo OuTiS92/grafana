@@ -365,7 +365,7 @@ install_mysql() {
 	install_service_mysql_export
 	sleep 1
 	clear
-	echo "Fnish .... " | lolcat -d -a -t -s
+	echo "Fnish .... " | lolcat -a -s 100
 }
 
 
@@ -373,7 +373,7 @@ install_mysql() {
 
 
 clear
-figlet "github OuTiS92" | lolcat -t -s -d
+figlet "github OuTiS92" | lolcat -a -s 100
 sleep 1
 echo -e " "
 echo -e " "
